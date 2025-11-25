@@ -500,7 +500,7 @@
       }
     }
 
-    function copyResponse(ai) {
+    function copyResponse(ai, event) {
       const text = ai === 'gemini' ? geminiResponse : claudeResponse;
 
       if (!text || text === "待機中...") {

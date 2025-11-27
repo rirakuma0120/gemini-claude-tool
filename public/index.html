@@ -470,7 +470,30 @@
         output.textContent = geminiResponse;
       }
     }
-
+    async function sendToChatGPT(system, prompt) {
+        const output = document.getElementById('chatgptOutput');
+        output.innerHTML = '<span class="loading">🤖 送信中...</span>';
+        try {
+          const res = await fetch('/api/chatgpt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              prompt: prompt
+            })
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            chatgptResponse = "❌ エラー: " + JSON.stringify(data, null, 2);
+            output.textContent = chatgptResponse;
+            return;
+          }
+          chatgptResponse = data.response;
+          output.textContent = chatgptResponse;
+        } catch (e) {
+          chatgptResponse = "⚠️ 通信エラー: " + e.message;
+          output.textContent = chatgptResponse;
+        }
+      }
     async function sendToClaude(system, prompt) {
       const output = document.getElementById('claudeOutput');
       output.innerHTML = '<span class="loading">🍋 送信中...</span>';

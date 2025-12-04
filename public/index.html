@@ -508,6 +508,55 @@
           output.textContent = chatgptResponse;
         }
       }
+    async function createSummary() {
+  const summarySection = document.getElementById('summarySection');
+  const summaryOutput = document.getElementById('summaryOutput');
+  
+  // まとめエリアを表示
+  summarySection.style.display = 'block';
+  summaryOutput.innerHTML = '<span class="loading">💭 3つのAIの回答をまとめています...</span>';
+  
+  // 3つの回答を結合
+  const combinedPrompt = `
+以下は同じ質問に対する3つのAIの回答です。これらを統合して、最も包括的で正確な回答を作成してください。
+
+【Geminiの回答】
+${geminiResponse}
+
+【Claudeの回答】
+${claudeResponse}
+
+【ChatGPTの回答】
+${chatgptResponse}
+
+上記の3つの回答を総合的に分析し、最適な統合回答を作成してください。
+`;
+
+  try {
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: "あなたは複数のAIの回答を統合する専門家です。",
+        prompt: combinedPrompt,
+        temperature: 0.7,
+        maxTokens: 2000
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      summaryResponse = "❌ エラー: " + JSON.stringify(data, null, 2);
+      summaryOutput.textContent = summaryResponse;
+      return;
+    }
+    summaryResponse = data.text;
+    summaryOutput.textContent = summaryResponse;
+  } catch (e) {
+    summaryResponse = "⚠️ 通信エラー: " + e.message;
+    summaryOutput.textContent = summaryResponse;
+  }
+}
+    
     async function sendToClaude(system, prompt) {
       const output = document.getElementById('claudeOutput');
       output.innerHTML = '<span class="loading">🍋 送信中...</span>';

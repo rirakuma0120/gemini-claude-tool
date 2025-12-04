@@ -597,7 +597,7 @@ ${chatgptResponse}
     }
 
     function copyResponse(ai, event) {
-      const text = ai === 'gemini' ? geminiResponse : ai === 'claude' ? claudeResponse : chatgptResponse;
+      const text = ai === 'gemini' ? geminiResponse : ai === 'claude' ? claudeResponse : ai === 'chatgpt' ? chatgptResponse : summaryResponse;
 
       if (!text || text === "待機中...") {
         alert('まだ回答がありません！🍋');

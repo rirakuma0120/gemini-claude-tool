@@ -448,6 +448,10 @@
       sendToGemini(system, prompt);
       sendToClaude(system, prompt);
       sendToChatGPT(system, prompt);
+      // 3つのAIの回答が揃ったらまとめを作成
+      setTimeout(() => {
+      createSummary();
+      }, 3000);
     });
 
     async function sendToGemini(system, prompt) {

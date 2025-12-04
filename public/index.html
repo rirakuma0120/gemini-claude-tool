@@ -380,6 +380,17 @@
     </div>
   </div>
 
+  <!-- まとめエリア -->
+<div class="summary-section" id="summarySection" style="display: none;">
+  <div class="summary-card">
+    <h2>🌟 統合まとめ（Claudeによる総合回答）</h2>
+    <div class="summary-content" id="summaryOutput">
+      <span class="loading">💭 3つのAIの回答をまとめています...</span>
+    </div>
+    <button class="copy-btn" onclick="copyResponse('summary', event)">📋 コピー</button>
+  </div>
+</div>
+  
   <script>
     let isDarkMode = false;
     let currentMode = 'balanced';

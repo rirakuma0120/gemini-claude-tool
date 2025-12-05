@@ -537,9 +537,11 @@ Promise.all([
 
         geminiResponse = data.text;
         output.textContent = geminiResponse;
+        return true;  // ← ここに追加（catch の前）
       } catch (e) {
         geminiResponse = "⚠️ 通信エラー: " + e.message;
         output.textContent = geminiResponse;
+        return false;  // ← ここにも追加（catch の中）
       }
     }
     async function sendToChatGPT(system, prompt) {

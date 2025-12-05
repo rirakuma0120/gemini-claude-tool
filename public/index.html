@@ -641,14 +641,16 @@ ${chatgptResponse}
         if (!res.ok) {
           claudeResponse = "❌ エラー: " + JSON.stringify(data, null, 2);
           output.textContent = claudeResponse;
-          return;
+          return false;
         }
 
         claudeResponse = data.text;
         output.textContent = claudeResponse;
+        return true;
       } catch (e) {
         claudeResponse = "⚠️ 通信エラー: " + e.message;
         output.textContent = claudeResponse;
+        return false;
       }
     }
 

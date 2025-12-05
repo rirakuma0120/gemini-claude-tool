@@ -559,13 +559,15 @@ Promise.all([
           if (!res.ok) {
             chatgptResponse = "❌ エラー: " + JSON.stringify(data, null, 2);
             output.textContent = chatgptResponse;
-            return;
+            return false;
           }
           chatgptResponse = data.response;
           output.textContent = chatgptResponse;
+          return true;  // ← この1行を追加
         } catch (e) {
           chatgptResponse = "⚠️ 通信エラー: " + e.message;
           output.textContent = chatgptResponse;
+          return false;  // ← この1行を追加
         }
       }
     async function createSummary() {

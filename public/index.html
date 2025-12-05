@@ -496,14 +496,17 @@
         return;
       }
 
-      sendToGemini(system, prompt);
-      sendToClaude(system, prompt);
-      sendToChatGPT(system, prompt);
-      // 3つのAIの回答が揃ったらまとめを作成
-      setTimeout(() => {
-      createSummary();
-      }, 10000);
-    });
+     // 3つのAIを並行実行して、全部終わったらまとめを作成
+Promise.all([
+  sendToGemini(system, prompt),
+  sendToClaude(system, prompt),
+  sendToChatGPT(system, prompt)
+]).then(() => {
+  // 全部終わったらまとめを作成
+  createSummary();
+}).catch(error => {
+  console.error('AI呼び出しエラー:', error);
+});
 
     async function sendToGemini(system, prompt) {
       const output = document.getElementById('geminiOutput');

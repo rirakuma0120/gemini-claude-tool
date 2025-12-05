@@ -532,7 +532,7 @@ Promise.all([
         if (!res.ok) {
           geminiResponse = "❌ エラー: " + JSON.stringify(data, null, 2);
           output.textContent = geminiResponse;
-          return;
+          return false;
         }
 
         geminiResponse = data.text;

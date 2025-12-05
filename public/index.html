@@ -495,18 +495,19 @@
         alert('プロンプトを入力してください！🍋');
         return;
       }
-
-     // 3つのAIを並行実行して、全部終わったらまとめを作成
-Promise.all([
-  sendToGemini(system, prompt),
-  sendToClaude(system, prompt),
-  sendToChatGPT(system, prompt)
-]).then(() => {
+    try {
+  // 3つのAIを並行実行して、全部終わったらまとめを作成
+  await Promise.all([
+    sendToGemini(system, prompt),
+    sendToClaude(system, prompt),
+    sendToChatGPT(system, prompt)
+  ]);
+  
   // 全部終わったらまとめを作成
   createSummary();
-}).catch(error => {
+} catch (error) {
   console.error('AI呼び出しエラー:', error);
-});
+}
 
     async function sendToGemini(system, prompt) {
       const output = document.getElementById('geminiOutput');

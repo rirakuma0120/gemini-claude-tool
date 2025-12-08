@@ -580,6 +580,7 @@
           }
           chatgptResponse = data.response;
           output.textContent = chatgptResponse;
+          updateWordCount('chatgpt', chatgptResponse);
           return true;  // ← この1行を追加
         } catch (e) {
           chatgptResponse = "⚠️ 通信エラー: " + e.message;

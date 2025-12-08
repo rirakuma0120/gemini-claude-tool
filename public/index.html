@@ -698,6 +698,13 @@ ${chatgptResponse}
         alert('コピーに失敗しました');
       });
     }
+    function updateWordCount(ai, text) {
+      const count = text.length;
+      const countElement = document.getElementById(`${ai}Count`);
+      if (countElement) {
+        countElement.textContent = `📝 ${count.toLocaleString()}文字`;
+      }
+    }
 
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;

@@ -564,14 +564,20 @@
     async function sendToChatGPT(system, prompt) {
         const output = document.getElementById('chatgptOutput');
         output.innerHTML = '<span class="loading">🤖 送信中...</span>';
+        // ▼ 【追加】現在のモード設定（温度など）を取得します
+        const config = modeConfigs[currentMode];
+      
         try {
           const res = await fetch('/api/chatgpt', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              prompt: prompt
-            })
-          });
+           method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system: system,                  // ▼ 【追加】システムメッセージを送る
+          prompt: prompt,
+          temperature: config.temperature, // ▼ 【追加】温度設定を送る
+          topP: config.topP                // ▼ 【追加】TopPも送る
+          })
+        });
           const data = await res.json();
           if (!res.ok) {
             chatgptResponse = "❌ エラー: " + JSON.stringify(data, null, 2);

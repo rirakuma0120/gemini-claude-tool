@@ -553,6 +553,7 @@
 
         geminiResponse = data.text;
         output.textContent = geminiResponse;
+        updateWordCount('gemini', geminiResponse);  // ← この1行を追加
         return true;  // ← ここに追加（catch の前）
       } catch (e) {
         geminiResponse = "⚠️ 通信エラー: " + e.message;

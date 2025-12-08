@@ -665,6 +665,7 @@ ${chatgptResponse}
 
         claudeResponse = data.text;
         output.textContent = claudeResponse;
+        updateWordCount('claude', claudeResponse);  // ← この1行を追加
         return true;
       } catch (e) {
         claudeResponse = "⚠️ 通信エラー: " + e.message;

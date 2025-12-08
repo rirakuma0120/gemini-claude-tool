@@ -327,10 +327,21 @@
       width: fit-content;
     }
 
-    .copy-btn:hover {
-      background: #FDD835;
-      transform: scale(1.05);
+    .word-count {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 8px;
+      font-weight: bold;
     }
+  
+    body.dark-mode .word-count {
+        color: #b0b0b0;
+   }
+    .copy-btn:hover {
+        background: #FDD835;
+        transform: scale(1.05);
+   }
 
     .copy-btn.copied {
       background: #4CAF50;

@@ -600,9 +600,10 @@
         }
       }
     async function createSummary() {
-  const summarySection = document.getElementById('summarySection');
-  const summaryOutput = document.getElementById('summaryOutput');
-  
+      const startTime = Date.now();  // ← ここに追加！
+      const summarySection = document.getElementById('summarySection');
+      const summaryOutput = document.getElementById('summaryOutput');
+      
   // まとめエリアを表示
   summarySection.style.display = 'block';
   summaryOutput.innerHTML = '<span class="loading">💭 3つのAIの回答をまとめています...</span>';

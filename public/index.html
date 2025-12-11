@@ -678,6 +678,7 @@ ${chatgptResponse}
 
         claudeResponse = data.text;
         output.textContent = claudeResponse;
+        claudeTime = (Date.now() - startTime) / 1000;  // ← この1行を追加
         updateWordCount('claude', claudeResponse);  // ← この1行を追加
         return true;
       } catch (e) {

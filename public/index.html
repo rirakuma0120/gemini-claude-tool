@@ -649,6 +649,7 @@ ${chatgptResponse}
 }
     
     async function sendToClaude(system, prompt) {
+      const startTime = Date.now();  // ← この1行を追加
       const output = document.getElementById('claudeOutput');
       output.innerHTML = '<span class="loading">🍋 送信中...</span>';
 

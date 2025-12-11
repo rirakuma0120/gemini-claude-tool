@@ -528,9 +528,9 @@
 }
 });
     async function sendToGemini(system, prompt) {
+      const startTime = Date.now();  // ← この1行を追加
       const output = document.getElementById('geminiOutput');
       output.innerHTML = '<span class="loading">🍋 送信中...</span>';
-
       const config = modeConfigs[currentMode];
 
       try {

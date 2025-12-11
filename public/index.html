@@ -566,6 +566,7 @@
       }
     }
     async function sendToChatGPT(system, prompt) {
+        const startTime = Date.now();
         const output = document.getElementById('chatgptOutput');
         output.innerHTML = '<span class="loading">🤖 送信中...</span>';
         // ▼ 【追加】現在のモード設定（温度など）を取得します

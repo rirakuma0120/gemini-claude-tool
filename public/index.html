@@ -734,7 +734,13 @@ ${chatgptResponse}
         countElement.textContent = `📝 ${count.toLocaleString()}文字`;
       }
     }
-
+    
+    function updateSpeed(ai, time) {
+      const speedElement = document.getElementById(`${ai}Speed`);
+      if (speedElement) {
+        speedElement.textContent = `⚡ ${time.toFixed(2)}秒`;
+      }
+    }
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;
       const body = document.body;

@@ -572,6 +572,7 @@
         geminiResponse = data.text;
         output.textContent = geminiResponse;
         geminiTime = (Date.now() - startTime) / 1000;  // ← この1行を追加（秒単位）
+        updateSpeed('gemini', geminiTime);  // ← この1行を追加
         updateWordCount('gemini', geminiResponse);  // ← この1行を追加
         return true;  // ← ここに追加（catch の前）
       } catch (e) {

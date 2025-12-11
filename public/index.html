@@ -607,6 +607,8 @@
           }
           chatgptResponse = data.response;
           output.textContent = chatgptResponse;
+          chatgptTime = (Date.now() - startTime) / 1000;  // ← 追加
+          updateSpeed('chatgpt', chatgptTime);  // ← 追加
           updateWordCount('chatgpt', chatgptResponse);
           return true;  // ← この1行を追加
         } catch (e) {

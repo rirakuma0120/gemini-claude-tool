@@ -661,6 +661,8 @@ ${chatgptResponse}
     }
     summaryResponse = data.text;
     summaryOutput.textContent = summaryResponse;
+    summaryTime = (Date.now() - startTime) / 1000;  // ← 追加
+    updateSpeed('summary', summaryTime);  // ← 追加
     updateWordCount('summary', summaryResponse);
   } catch (e) {
     summaryResponse = "⚠️ 通信エラー: " + e.message;

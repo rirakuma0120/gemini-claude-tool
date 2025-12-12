@@ -450,6 +450,10 @@
       <button class="copy-btn" onclick="copyResponse('chatgpt', event)">📋 コピー</button>
       <div class="word-count" id="chatgptCount">📝 0文字</div>
       <div class="speed-count" id="chatgptSpeed">⚡ 0秒</div>
+      <div class="rating-buttons">
+        <button class="rating-btn like-btn" onclick="rate('chatgpt', 'like')">👍 いいね (<span id="chatgptLikes">0</span>)</button>
+        <button class="rating-btn dislike-btn" onclick="rate('chatgpt', 'dislike')">👎 イマイチ (<span id="chatgptDislikes">0</span>)</button>
+      </div>
     </div>
       
       <div class="result-card">

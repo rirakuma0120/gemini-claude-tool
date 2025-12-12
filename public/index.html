@@ -438,6 +438,10 @@
         <button class="copy-btn" onclick="copyResponse('gemini', event)">📋 コピー</button>
         <div class="word-count" id="geminiCount">📝 0文字</div>
         <div class="speed-count" id="geminiSpeed">⚡ 0秒</div>
+        <div class="rating-buttons">
+          <button class="rating-btn like-btn" onclick="rate('gemini', 'like')">👍 いいね (<span id="geminiLikes">0</span>)</button>
+          <button class="rating-btn dislike-btn" onclick="rate('gemini', 'dislike')">👎 イマイチ (<span id="geminiDislikes">0</span>)</button>
+        </div>
       </div>
 
     <div class="result-card">

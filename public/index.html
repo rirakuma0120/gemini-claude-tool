@@ -829,19 +829,46 @@ ${chatgptResponse}
       }
     }
     function rate(ai, type) {
+        const likeBtn = event.target.closest('.like-btn');
+        const dislikeBtn = event.target.closest('.dislike-btn');
+        
         if (type === 'like') {
-          ratings[ai].likes++;
-          document.getElementById(`${ai}Likes`).textContent = ratings[ai].likes;
+          // 既に押されている場合は取り消し
+          if (likeBtn && likeBtn.classList.contains('active')) {
+            ratings[ai].likes--;
+            likeBtn.classList.remove('active');
+          } else {
+            // いいねを押す
+            ratings[ai].likes++;
+            if (likeBtn) likeBtn.classList.add('active');
+            
+            // イマイチが押されていたら取り消し
+            if (dislikeBtn && dislikeBtn.classList.contains('active')) {
+              ratings[ai].dislikes--;
+              dislikeBtn.classList.remove('active');
+            }
+          }
         } else {
-          ratings[ai].dislikes++;
-          document.getElementById(`${ai}Dislikes`).textContent = ratings[ai].dislikes;
+          // 既に押されている場合は取り消し
+          if (dislikeBtn && dislikeBtn.classList.contains('active')) {
+            ratings[ai].dislikes--;
+            dislikeBtn.classList.remove('active');
+          } else {
+            // イマイチを押す
+            ratings[ai].dislikes++;
+            if (dislikeBtn) dislikeBtn.classList.add('active');
+            
+            // いいねが押されていたら取り消し
+            if (likeBtn && likeBtn.classList.contains('active')) {
+              ratings[ai].likes--;
+              likeBtn.classList.remove('active');
+            }
+          }
         }
         
-        // ボタンにフィードバック
-        event.target.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-          event.target.style.transform = 'scale(1)';
-        }, 200);
+        // 数字を更新
+        document.getElementById(`${ai}Likes`).textContent = ratings[ai].likes;
+        document.getElementById(`${ai}Dislikes`).textContent = ratings[ai].dislikes;
       }
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;

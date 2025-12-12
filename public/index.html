@@ -767,11 +767,11 @@
     sendToChatGPT(system, prompt)
   ]);
   
-  // 全部終わったらまとめを作成
-  createSummary();
-  // 履歴を保存
-  const prompt = document.getElementById('prompt').value.trim();
-  saveHistory(prompt, geminiResponse, claudeResponse, chatgptResponse, summaryResponse);
+// 全部終わったらまとめを作成
+await createSummary();
+// 履歴を保存
+saveHistory(prompt, geminiResponse, claudeResponse, chatgptResponse, summaryResponse);
+  
 } catch (error) {
   console.error('AI呼び出しエラー:', error);
 }

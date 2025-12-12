@@ -482,6 +482,13 @@
     let claudeTime = 0;
     let chatgptTime = 0;
     let summaryTime = 0;
+    // 評価カウント用
+    let ratings = {
+      gemini: { likes: 0, dislikes: 0 },
+      claude: { likes: 0, dislikes: 0 },
+      chatgpt: { likes: 0, dislikes: 0 },
+      summary: { likes: 0, dislikes: 0 }
+    };
         
     const modeConfigs = {
       stable: {

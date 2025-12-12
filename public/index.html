@@ -828,6 +828,21 @@ ${chatgptResponse}
         speedElement.textContent = `⚡ ${time.toFixed(2)}秒`;
       }
     }
+    function rate(ai, type) {
+        if (type === 'like') {
+          ratings[ai].likes++;
+          document.getElementById(`${ai}Likes`).textContent = ratings[ai].likes;
+        } else {
+          ratings[ai].dislikes++;
+          document.getElementById(`${ai}Dislikes`).textContent = ratings[ai].dislikes;
+        }
+        
+        // ボタンにフィードバック
+        event.target.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          event.target.style.transform = 'scale(1)';
+        }, 200);
+      }
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;
       const body = document.body;

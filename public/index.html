@@ -462,6 +462,10 @@
         <button class="copy-btn" onclick="copyResponse('claude', event)">📋 コピー</button>
         <div class="word-count" id="claudeCount">📝 0文字</div>
         <div class="speed-count" id="claudeSpeed">⚡ 0秒</div>
+        <div class="rating-buttons">
+          <button class="rating-btn like-btn" onclick="rate('claude', 'like')">👍 いいね (<span id="claudeLikes">0</span>)</button>
+          <button class="rating-btn dislike-btn" onclick="rate('claude', 'dislike')">👎 イマイチ (<span id="claudeDislikes">0</span>)</button>
+        </div>
       </div>
     </div>
   </div>
@@ -476,6 +480,10 @@
     <button class="copy-btn" onclick="copyResponse('summary', event)">📋 コピー</button>
     <div class="word-count" id="summaryCount">📝 0文字</div>
     <div class="speed-count" id="summarySpeed">⚡ 0秒</div>
+    <div class="rating-buttons">
+      <button class="rating-btn like-btn" onclick="rate('summary', 'like')">👍 いいね (<span id="summaryLikes">0</span>)</button>
+      <button class="rating-btn dislike-btn" onclick="rate('summary', 'dislike')">👎 イマイチ (<span id="summaryDislikes">0</span>)</button>
+    </div>
   </div>
 </div>
   

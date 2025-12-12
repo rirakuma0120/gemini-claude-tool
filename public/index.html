@@ -919,5 +919,20 @@ ${chatgptResponse}
       }
     }
   </script>
+  <!-- 履歴モーダル -->
+<div class="history-modal" id="historyModal" style="display: none;">
+  <div class="history-overlay" onclick="closeHistory()"></div>
+  <div class="history-content">
+    <div class="history-header">
+      <h2>📜 保存された履歴</h2>
+      <button class="close-btn" onclick="closeHistory()">✕</button>
+    </div>
+    <div id="historyList" class="history-list">
+      <!-- ここに履歴が表示される -->
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>

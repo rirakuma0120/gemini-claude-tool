@@ -419,7 +419,22 @@
           background: #EF5350;
           color: #2a2a3e;
         }
+      .history-btn {
+      margin-top: 12px;
+      padding: 10px 24px;
+      font-size: 14px;
+      background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+      color: white;
+      }
+
+      .history-btn:hover {
+        background: linear-gradient(135deg, #7B1FA2 0%, #6A1B9A 100%);
+      }
       
+      body.dark-mode .history-btn {
+        background: linear-gradient(135deg, #7B1FA2 0%, #6A1B9A 100%);
+      }
+            
       .copy-btn:hover {
         background: #FDD835;
         transform: scale(1.05);

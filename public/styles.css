@@ -175,8 +175,9 @@
       border-radius: 25px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: all 0.3s ease;
-      width: 100%;
-      margin-top: 12px;
+      width: 300px;  /* ← 100%から300pxに変更 */
+      margin: 12px auto 0;  /* ← 中央寄せ */
+    　display: block;
     }
 
     button:hover {

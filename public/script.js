@@ -168,7 +168,7 @@ saveHistory(prompt, geminiResponse, claudeResponse, chatgptResponse, summaryResp
       
   // まとめエリアを表示
   summarySection.style.display = 'block';
-  summaryOutput.innerHTML = '<span class="loading">💭 3つのAIの回答をまとめています...</span>';
+  summaryOutput.innerHTML = '<span class="loading">💭AIの回答をまとめています...</span>';
   
   // 3つの回答を結合
   const combinedPrompt = `

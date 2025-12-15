@@ -9,6 +9,13 @@
     let claudeTime = 0;
     let chatgptTime = 0;
     let summaryTime = 0;
+
+    let favorites = {
+      gemini: false,
+      claude: false,
+      chatgpt: false,
+      summary: false
+    };
     // 評価カウント用
     let ratings = {
       gemini: { likes: 0, dislikes: 0 },

@@ -373,7 +373,13 @@ ${chatgptResponse}
       if (history.length === 0) {
         historyList.innerHTML = '<p style="text-align: center; color: #888;">まだ履歴がありません</p>';
       } else {
-        historyList.innerHTML = history.map((item, index) => `
+        historyList.innerHTML = history.map((item, index) => 
+            
+          const geminiFav = item.favorites?.gemini ? ' ⭐' : '';
+          const chatgptFav = item.favorites?.chatgpt ? ' ⭐' : '';
+          const claudeFav = item.favorites?.claude ? ' ⭐' : '';
+          
+          return `
           <div class="history-item">
             <div class="history-item-date">${item.date}</div>
             <div class="history-item-question">📝 質問: ${item.question}</div>

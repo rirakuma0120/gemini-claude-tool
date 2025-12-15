@@ -346,7 +346,7 @@ ${chatgptResponse}
         summary: summary,
         geminiTime: geminiTime,
         claudeTime: claudeTime,
-        chatgptTime: chatgptTime
+        chatgptTime: chatgptTime,
         //  お気に入り情報を追加
         favorites: {
           gemini: favorites.gemini,

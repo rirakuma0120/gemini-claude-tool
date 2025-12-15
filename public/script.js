@@ -347,6 +347,13 @@ ${chatgptResponse}
         geminiTime: geminiTime,
         claudeTime: claudeTime,
         chatgptTime: chatgptTime
+        //  お気に入り情報を追加
+        favorites: {
+          gemini: favorites.gemini,
+          claude: favorites.claude,
+          chatgpt: favorites.chatgpt,
+          summary: favorites.summary
+        }
       });
       
       // 最大50件まで保存

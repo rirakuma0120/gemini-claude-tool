@@ -399,4 +399,18 @@ ${chatgptResponse}
         toggleBtn.textContent = '🌙';
       }
     }
-
+    // お気に入り機能
+    function toggleFavorite(ai) {
+      // お気に入り状態を反転
+      favorites[ai] = !favorites[ai];
+      
+      // ボタンの見た目を更新
+      const btn = document.getElementById(`${ai}Favorite`);
+      if (favorites[ai]) {
+        btn.classList.add('active');
+        btn.textContent = '⭐ お気に入り済み';
+      } else {
+        btn.classList.remove('active');
+        btn.textContent = '⭐ お気に入り';
+      }
+    }

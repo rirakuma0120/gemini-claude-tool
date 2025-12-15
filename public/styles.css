@@ -600,3 +600,40 @@
       }
     }
 
+        /* お気に入りボタン */
+    .favorite-btn {
+      display: block;
+      margin: 8px auto 0;
+      padding: 6px 16px;
+      font-size: 12px;
+      background: white;
+      color: #FFA000;
+      border: 2px solid #FFA000;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      width: fit-content;
+    }
+    
+    .favorite-btn:hover {
+      background: #FFF3E0;
+      transform: scale(1.05);
+    }
+    
+    .favorite-btn.active {
+      background: #FFA000;
+      color: white;
+      box-shadow: 0 4px 8px rgba(255, 160, 0, 0.3);
+    }
+    
+    body.dark-mode .favorite-btn {
+      background: #2a2a3e;
+      border-color: #FFB74D;
+      color: #FFB74D;
+    }
+    
+    body.dark-mode .favorite-btn.active {
+      background: #FFB74D;
+      color: #2a2a3e;
+    }

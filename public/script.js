@@ -363,7 +363,6 @@ ${chatgptResponse}
       
       localStorage.setItem('aiHistory', JSON.stringify(history));
     }
-    
     // 履歴を表示
     function showHistory() {
       const modal = document.getElementById('historyModal');
@@ -373,28 +372,29 @@ ${chatgptResponse}
       if (history.length === 0) {
         historyList.innerHTML = '<p style="text-align: center; color: #888;">まだ履歴がありません</p>';
       } else {
-        historyList.innerHTML = history.map((item, index) => 
-            
+        historyList.innerHTML = history.map((item, index) => {
+          // ⭐ お気に入りマークを準備
           const geminiFav = item.favorites?.gemini ? ' ⭐' : '';
           const chatgptFav = item.favorites?.chatgpt ? ' ⭐' : '';
           const claudeFav = item.favorites?.claude ? ' ⭐' : '';
           
           return `
-          <div class="history-item">
-            <div class="history-item-date">${item.date}</div>
-            <div class="history-item-question">📝 質問: ${item.question}</div>
-            <div class="history-item-response">
-              <strong>🌈 Gemini (${item.geminiTime?.toFixed(2) || '-'}秒):</strong><br>${item.gemini || '-'}<br><br>
-              <strong>🤖 ChatGPT (${item.chatgptTime?.toFixed(2) || '-'}秒):</strong><br>${item.chatgpt || '-'}<br><br>
-              <strong>📘 Claude (${item.claudeTime?.toFixed(2) || '-'}秒):</strong><br>${item.claude || '-'}
+            <div class="history-item">
+              <div class="history-item-date">${item.date}</div>
+              <div class="history-item-question">📝 質問: ${item.question}</div>
+              <div class="history-item-response">
+                <strong>🌈 Gemini (${item.geminiTime?.toFixed(2) || '-'}秒)${geminiFav}:</strong><br>${item.gemini || '-'}<br><br>
+                <strong>🤖 ChatGPT (${item.chatgptTime?.toFixed(2) || '-'}秒)${chatgptFav}:</strong><br>${item.chatgpt || '-'}<br><br>
+                <strong>📘 Claude (${item.claudeTime?.toFixed(2) || '-'}秒)${claudeFav}:</strong><br>${item.claude || '-'}
+              </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       }
       
       modal.style.display = 'flex';
     }
-
+   
     // 履歴を閉じる
     function closeHistory() {
       document.getElementById('historyModal').style.display = 'none';

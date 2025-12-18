@@ -670,7 +670,17 @@
     body.dark-mode .export-btn {
       background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
     }
-
+    .export-btn.csv {
+      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    }
+    
+    .export-btn.csv:hover {
+      background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+    }
+    
+    body.dark-mode .export-btn.csv {
+      background: linear-gradient(135deg, #42A5F5 0%, #2196F3 100%);
+    }
     /* テーマ選択ボタン */
     .theme-selector {
       text-align: center;

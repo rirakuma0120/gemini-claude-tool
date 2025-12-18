@@ -638,3 +638,35 @@
       background: #FFB74D;
       color: #2a2a3e;
     }
+    /* エクスポートボタン */
+    .export-buttons {
+      padding: 12px 20px;
+      border-bottom: 2px solid #FFEB3B;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    
+    .export-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      width: auto;
+      margin: 0;
+    }
+    
+    .export-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #388E3C 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    }
+    
+    body.dark-mode .export-btn {
+      background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
+    }

@@ -11,8 +11,16 @@
   <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
 
   <div class="container">
-    <h1>🍋 ChatGPT vs Claude 比較ツール</h1>
-    <p>2つのAIを同時に比較できます（Vercel版）</p>
+  <h1>🍋 ChatGPT vs Claude 比較ツール</h1>
+  <p>ChatGPTとClaudeを同時に比較できます</p>
+  
+  <!-- ⭐ テーマ選択ボタン -->
+  <div class="theme-selector">
+    <span class="theme-label">テーマ:</span>
+    <button class="theme-btn active" data-theme="lemon" onclick="setTheme('lemon')">🍋</button>
+    <button class="theme-btn" data-theme="blueberry" onclick="setTheme('blueberry')">🫐</button>
+    <button class="theme-btn" data-theme="strawberry" onclick="setTheme('strawberry')">🍓</button>
+  </div>
 
     <div class="input-section">
       <label>📝 システムメッセージ</label>

@@ -488,8 +488,29 @@ const themes = {
     light: ['#FCE4EC', '#F8BBD0', '#F06292'],
     dark: ['#1a0d14', '#2d1b24', '#4a2640'],
     accent: '#F06292'
-  }
-};
+  },
+    orange: {
+        name: 'オレンジ',
+        emoji: '🍊',
+        light: ['#FFF3E0', '#FFB74D', '#FF9800'],
+        dark: ['#1a0f00', '#2d1b0a', '#4a2c0f'],
+        accent: '#FF9800'
+      },
+      grape: {
+        name: 'グレープ',
+        emoji: '🍇',
+        light: ['#F3E5F5', '#CE93D8', '#9C27B0'],
+        dark: ['#1a0a1f', '#2d1533', '#4a2654'],
+        accent: '#9C27B0'
+      },
+      kiwi: {
+        name: 'キウイ',
+        emoji: '🥝',
+        light: ['#F1F8E9', '#AED581', '#8BC34A'],
+        dark: ['#0a1a05', '#15260d', '#234018'],
+        accent: '#8BC34A'
+      }
+    };
 
 let currentTheme = 'lemon';
 

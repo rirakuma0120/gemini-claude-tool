@@ -427,3 +427,41 @@ ${chatgptResponse}
         btn.textContent = '⭐ お気に入り';
       }
     }
+    // JSONエクスポート機能
+function exportJSON() {
+  // localStorageから履歴を取得
+  const history = JSON.parse(localStorage.getItem('aiHistory') || '[]');
+  
+  // 履歴がない場合
+  if (history.length === 0) {
+    alert('エクスポートする履歴がありません🍋');
+    return;
+  }
+  
+  // JSON形式に変換（見やすくインデント）
+  const jsonString = JSON.stringify(history, null, 2);
+  
+  // Blobオブジェクトを作成
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  
+  // ダウンロードリンクを作成
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  
+  // ファイル名を生成（日時付き）
+  const now = new Date();
+  const dateStr = now.toISOString().slice(0, 10); // 2024-12-18
+  const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '-'); // 10-30-45
+  link.download = `ai-history_${dateStr}_${timeStr}.json`;
+  
+  // ダウンロード実行
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // URLを解放
+  URL.revokeObjectURL(url);
+  
+  alert('履歴をダウンロードしました！🍋✨');
+}

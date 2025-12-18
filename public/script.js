@@ -465,3 +465,83 @@ function exportJSON() {
   
   alert('履歴をダウンロードしました！🍋✨');
 }
+
+// テーマ設定
+const themes = {
+  lemon: {
+    name: 'レモン',
+    emoji: '🍋',
+    light: ['#FFF9C4', '#FFF59D', '#FFEB3B'],
+    dark: ['#1a1a2e', '#16213e', '#0f3460'],
+    accent: '#FDD835'
+  },
+  blueberry: {
+    name: 'ブルーベリー',
+    emoji: '🫐',
+    light: ['#E3F2FD', '#90CAF9', '#2196F3'],
+    dark: ['#0D1B2A', '#1B263B', '#415A77'],
+    accent: '#2196F3'
+  },
+  strawberry: {
+    name: 'ストロベリー',
+    emoji: '🍓',
+    light: ['#FCE4EC', '#F8BBD0', '#F06292'],
+    dark: ['#1a0d14', '#2d1b24', '#4a2640'],
+    accent: '#F06292'
+  }
+};
+
+let currentTheme = 'lemon';
+
+// ページ読み込み時にテーマを復元
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('selectedTheme') || 'lemon';
+  setTheme(savedTheme, false);
+});
+
+// テーマを変更
+function setTheme(themeName, save = true) {
+  currentTheme = themeName;
+  const theme = themes[themeName];
+  
+  if (!theme) return;
+  
+  // CSSカスタムプロパティを更新
+  const root = document.documentElement;
+  const colors = isDarkMode ? theme.dark : theme.light;
+  
+  root.style.setProperty('--gradient-1', colors[0]);
+  root.style.setProperty('--gradient-2', colors[1]);
+  root.style.setProperty('--gradient-3', colors[2]);
+  root.style.setProperty('--accent-color', theme.accent);
+  
+  // 背景グラデーションを更新
+  const body = document.body;
+  if (isDarkMode) {
+    body.style.background = `linear-gradient(270deg, ${colors[0]}, ${colors[1]}, ${colors[2]})`;
+  } else {
+    body.style.background = `linear-gradient(270deg, ${colors[0]}, ${colors[1]}, ${colors[2]})`;
+  }
+  body.style.backgroundSize = '600% 600%';
+  
+  // activeクラスを更新
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const activeBtn = document.querySelector(`[data-theme="${themeName}"]`);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+  }
+  
+  // localStorageに保存
+  if (save) {
+    localStorage.setItem('selectedTheme', themeName);
+  }
+}
+
+// ダークモード切り替え時にテーマを再適用
+const originalToggleDarkMode = toggleDarkMode;
+toggleDarkMode = function() {
+  originalToggleDarkMode();
+  setTheme(currentTheme, false);
+};

@@ -572,3 +572,67 @@ function showSummaryWithAnimation() {
     summarySection.style.opacity = '1';
   }, 100);
 }
+// CSVエクスポート機能
+function exportCSV() {
+  // localStorageから履歴を取得
+  const history = JSON.parse(localStorage.getItem('aiHistory') || '[]');
+  
+  // 履歴がない場合
+  if (history.length === 0) {
+    alert('エクスポートする履歴がありません🍋');
+    return;
+  }
+  
+  // CSVヘッダー
+  let csvContent = '日時,質問,ChatGPT,Claude,まとめ,ChatGPT速度(秒),Claude速度(秒)\n';
+  
+  // 各履歴をCSV行に変換
+  history.forEach(item => {
+    // カンマや改行を含む場合はダブルクォートで囲む
+    const escapeCSV = (text) => {
+      if (!text) return '';
+      // ダブルクォートをエスケープ
+      text = text.replace(/"/g, '""');
+      // カンマ、改行、ダブルクォートを含む場合はクォートで囲む
+      if (text.includes(',') || text.includes('\n') || text.includes('"')) {
+        return `"${text}"`;
+      }
+      return text;
+    };
+    
+    const date = escapeCSV(item.date || '');
+    const question = escapeCSV(item.question || '');
+    const chatgpt = escapeCSV(item.chatgpt || '');
+    const claude = escapeCSV(item.claude || '');
+    const summary = escapeCSV(item.summary || '');
+    const chatgptTime = item.chatgptTime?.toFixed(2) || '-';
+    const claudeTime = item.claudeTime?.toFixed(2) || '-';
+    
+    csvContent += `${date},${question},${chatgpt},${claude},${summary},${chatgptTime},${claudeTime}\n`;
+  });
+  
+  // BOM付きでUTF-8エンコード（Excelで文字化け防止）
+  const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+  const blob = new Blob([bom, csvContent], { type: 'text/csv;charset=utf-8;' });
+  
+  // ダウンロードリンクを作成
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  
+  // ファイル名を生成（日時付き）
+  const now = new Date();
+  const dateStr = now.toISOString().slice(0, 10);
+  const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '-');
+  link.download = `ai-history_${dateStr}_${timeStr}.csv`;
+  
+  // ダウンロード実行
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // URLを解放
+  URL.revokeObjectURL(url);
+  
+  alert('履歴をCSVでダウンロードしました！🍋✨');
+}

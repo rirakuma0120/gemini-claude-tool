@@ -545,3 +545,30 @@ toggleDarkMode = function() {
   originalToggleDarkMode();
   setTheme(currentTheme, false);
 };
+
+// 回答表示時のアニメーション強化
+function showResponseWithAnimation(elementId, response) {
+  const element = document.getElementById(elementId);
+  
+  // 一度透明にする
+  element.style.opacity = '0';
+  element.textContent = response;
+  
+  // フェードイン
+  setTimeout(() => {
+    element.style.transition = 'opacity 0.5s ease-out';
+    element.style.opacity = '1';
+  }, 50);
+}
+
+// まとめエリア表示時のアニメーション
+function showSummaryWithAnimation() {
+  const summarySection = document.getElementById('summarySection');
+  summarySection.style.opacity = '0';
+  summarySection.style.display = 'block';
+  
+  setTimeout(() => {
+    summarySection.style.transition = 'opacity 0.7s ease-out';
+    summarySection.style.opacity = '1';
+  }, 100);
+}

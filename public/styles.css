@@ -731,3 +731,101 @@
     body.dark-mode .theme-btn.active {
       border-color: #FFEB3B;
     }
+    /* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(255, 235, 59, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(255, 235, 59, 0.8);
+  }
+}
+
+/* 回答カードのフェードイン */
+.result-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 回答内容のフェードイン */
+.result-content {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* まとめカードのフェードイン */
+.summary-card {
+  animation: fadeIn 0.7s ease-out;
+}
+
+/* 送信ボタンのパルスエフェクト */
+button:not(:disabled):not(.close-btn) {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+button:hover {
+  animation: none;
+}
+
+/* 履歴アイテムのスライドイン */
+.history-item {
+  animation: slideIn 0.4s ease-out;
+}
+
+.history-item:nth-child(1) { animation-delay: 0s; }
+.history-item:nth-child(2) { animation-delay: 0.1s; }
+.history-item:nth-child(3) { animation-delay: 0.2s; }
+.history-item:nth-child(4) { animation-delay: 0.3s; }
+.history-item:nth-child(5) { animation-delay: 0.4s; }
+
+/* テーマボタンのホバーアニメーション */
+.theme-btn {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-btn:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* モード切り替えボタンのアニメーション */
+.mode-btn {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mode-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* エクスポートボタンのアニメーション */
+.export-btn:hover {
+  animation: pulse 0.5s ease-in-out;
+}
+
+/* お気に入りボタンのアニメーション */
+.favorite-btn:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.favorite-btn.active {
+  animation: pulse 0.5s ease-in-out;
+}

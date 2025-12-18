@@ -670,3 +670,64 @@
     body.dark-mode .export-btn {
       background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
     }
+
+    /* テーマ選択ボタン */
+    .theme-selector {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    body.dark-mode .theme-selector {
+      background: rgba(42, 42, 62, 0.8);
+    }
+    
+    .theme-label {
+      font-weight: bold;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    body.dark-mode .theme-label {
+      color: #FFEB3B;
+    }
+    
+    .theme-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 28px;
+      border: 3px solid #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .theme-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .theme-btn.active {
+      border-color: #FDD835;
+      border-width: 4px;
+      transform: scale(1.15);
+      box-shadow: 0 6px 16px rgba(255, 235, 59, 0.5);
+    }
+    
+    body.dark-mode .theme-btn {
+      background: #2a2a3e;
+      border-color: #4a4a6e;
+    }
+    
+    body.dark-mode .theme-btn.active {
+      border-color: #FFEB3B;
+    }

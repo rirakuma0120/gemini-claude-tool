@@ -839,3 +839,49 @@ button:hover {
 .favorite-btn.active {
   animation: pulse 0.5s ease-in-out;
 }
+
+/* 読み上げボタン */
+.speak-btn {
+  display: block;
+  margin: 8px auto 0;
+  padding: 4px 12px;
+  font-size: 10px;
+  background: #E3F2FD;
+  color: #1976D2;
+  border: 2px solid #2196F3;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.speak-btn:hover {
+  background: #2196F3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.speak-btn.speaking {
+  background: #4CAF50;
+  color: white;
+  border-color: #45a049;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+body.dark-mode .speak-btn {
+  background: #2a2a3e;
+  color: #90CAF9;
+  border-color: #90CAF9;
+}
+
+body.dark-mode .speak-btn:hover {
+  background: #90CAF9;
+  color: #2a2a3e;
+}
+
+body.dark-mode .speak-btn.speaking {
+  background: #66BB6A;
+  color: #2a2a3e;
+  border-color: #81C784;
+}

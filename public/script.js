@@ -72,7 +72,7 @@
     try {
   // 3つのAIを並行実行して、全部終わったらまとめを作成
   await Promise.all([
-    //sendToGemini(system, prompt),
+    sendToGemini(system, prompt),
     sendToClaude(system, prompt),
     sendToChatGPT(system, prompt)
   ]);

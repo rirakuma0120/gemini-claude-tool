@@ -657,3 +657,75 @@ function exportCSV() {
   
   alert('履歴をCSVでダウンロードしました！🍋✨');
 }
+// 音声読み上げ機能
+let currentSpeech = null;
+
+function speakText(ai) {
+  // 読み上げるテキストを取得
+  let text = '';
+  if (ai === 'chatgpt') {
+    text = chatgptResponse;
+  } else if (ai === 'claude') {
+    text = claudeResponse;
+  } else if (ai === 'summary') {
+    text = summaryResponse;
+  }
+  
+  // テキストがない場合
+  if (!text || text === '待機中...') {
+    alert('読み上げる内容がありません🍋');
+    return;
+  }
+  
+  // 既に読み上げ中の場合は停止
+  if (currentSpeech) {
+    window.speechSynthesis.cancel();
+    currentSpeech = null;
+    // ボタンのクラスを削除
+    document.querySelectorAll('.speak-btn').forEach(btn => {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊 読み上げ';
+    });
+    return;
+  }
+  
+  // Web Speech API を使用
+  const utterance = new SpeechSynthesisUtterance(text);
+  
+  // 日本語に設定
+  utterance.lang = 'ja-JP';
+  
+  // 速度（0.1〜10、デフォルト1）
+  utterance.rate = 1.2;
+  
+  // 音量（0〜1、デフォルト1）
+  utterance.volume = 1;
+  
+  // ピッチ（0〜2、デフォルト1）
+  utterance.pitch = 1;
+  
+  // ボタンの見た目を変更
+  const btn = event.target;
+  btn.classList.add('speaking');
+  btn.textContent = '⏹️ 停止';
+  
+  // 読み上げ終了時
+  utterance.onend = () => {
+    currentSpeech = null;
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊 読み上げ';
+  };
+  
+  // エラー時
+  utterance.onerror = (event) => {
+    console.error('読み上げエラー:', event);
+    currentSpeech = null;
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊 読み上げ';
+    alert('読み上げに失敗しました😿');
+  };
+  
+  // 読み上げ開始
+  currentSpeech = utterance;
+  window.speechSynthesis.speak(utterance);
+}

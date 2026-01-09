@@ -387,6 +387,7 @@ ${chatgptResponse}
                 <strong>🤖 ChatGPT (${item.chatgptTime?.toFixed(2) || '-'}秒)${chatgptFav}:</strong><br>${item.chatgpt || '-'}<br><br>
                 <strong>📘 Claude (${item.claudeTime?.toFixed(2) || '-'}秒)${claudeFav}:</strong><br>${item.claude || '-'}
               </div>
+              <button class="delete-history-btn" onclick="deleteHistory(${index})">🗑️ 削除</button>
             </div>
           `;
         }).join('');

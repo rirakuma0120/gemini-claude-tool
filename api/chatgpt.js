@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         'Authorization': `Bearer ${OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: messages, // ▼ 【修正3】作成したmessages配列を使う
         max_tokens: 1000,
         // ▼ 【修正4】受け取った温度を使う（無い場合はデフォルト0.7）

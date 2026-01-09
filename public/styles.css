@@ -885,3 +885,60 @@ body.dark-mode .speak-btn.speaking {
   color: #2a2a3e;
   border-color: #81C784;
 }
+/* 履歴削除ボタン */
+.delete-history-btn {
+  display: block;
+  margin: 12px auto 0;
+  padding: 6px 16px;
+  font-size: 12px;
+  background: #fff;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.delete-history-btn:hover {
+  background: #dc3545;
+  color: white;
+  transform: scale(1.05);
+}
+
+body.dark-mode .delete-history-btn {
+  background: #2a2a3e;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+body.dark-mode .delete-history-btn:hover {
+  background: #ff6b6b;
+  color: #2a2a3e;
+}
+```
+
+---
+
+## ✅ 完成後の動作
+
+**履歴モーダルを開く：**
+```
+┌─────────────────────────────┐
+│ 2026/01/09 13:40           │
+│ 📝 質問: レモンについて      │
+│ 回答内容...                │
+│ [🗑️ 削除] ← クリック        │
+└─────────────────────────────┘
+```
+
+**↓**
+```
+「この履歴を削除しますか？🍋」
+[OK] [キャンセル]
+```
+
+**↓**
+```
+履歴が削除される！

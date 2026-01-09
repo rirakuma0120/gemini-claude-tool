@@ -730,3 +730,22 @@ function speakText(ai) {
   currentSpeech = utterance;
   window.speechSynthesis.speak(utterance);
 }
+// 履歴を1つ削除
+function deleteHistory(index) {
+  // 確認ダイアログ
+  if (!confirm('この履歴を削除しますか？🍋')) {
+    return;
+  }
+  
+  // localStorageから履歴を取得
+  const history = JSON.parse(localStorage.getItem('aiHistory') || '[]');
+  
+  // 指定されたインデックスを削除
+  history.splice(index, 1);
+  
+  // localStorageに保存
+  localStorage.setItem('aiHistory', JSON.stringify(history));
+  
+  // 履歴を再表示
+  showHistory();
+}
